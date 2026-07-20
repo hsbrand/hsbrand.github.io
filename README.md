@@ -10,6 +10,7 @@ Production-oriented Jekyll site for hsbrand.ca.
 4. Select the default branch and `/ (root)`.
 5. Configure the custom domain as `hsbrand.ca`.
 
+
 ## Brand logo
 
 The current build uses:
