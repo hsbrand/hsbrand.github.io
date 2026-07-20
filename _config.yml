@@ -1,0 +1,35 @@
+title: Hockey Stock
+description: Stylish hockey clothes for players who live hockey.
+url: https://hsbrand.ca
+baseurl: ""
+email: contact@hsbrand.ca
+permalink: pretty
+markdown: kramdown
+collections:
+  designs:
+    output: true
+    permalink: /designs/:name/
+  drops:
+    output: true
+    permalink: /drops/:name/
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: designs
+    values:
+      layout: design
+  - scope:
+      path: ""
+      type: drops
+    values:
+      layout: drop
+plugins:
+  - jekyll-seo-tag
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

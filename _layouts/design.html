@@ -1,0 +1,71 @@
+---
+layout: default
+---
+<article class="design-page">
+  <section class="design-hero">
+    <div class="design-hero-copy">
+      <p class="eyebrow">{{ page.code }} · {{ page.drop }}</p>
+      <h1>{{ page.title }}</h1>
+      <p class="design-lede">{{ page.tagline }}</p>
+    </div>
+    <div class="design-hero-media media-shell" data-image-shell>
+      <img src="{{ page.hero | relative_url }}" alt="{{ page.hero_alt }}" onerror="this.closest('[data-image-shell]').classList.add('is-missing'); this.remove();">
+      <span class="image-fallback">{{ page.code }}<br>Hero image</span>
+    </div>
+  </section>
+
+  <section class="story-grid section-pad">
+    <div>
+      <p class="eyebrow">The idea</p>
+      <h2>{{ page.intro_heading }}</h2>
+    </div>
+    <div class="prose">{{ content }}</div>
+  </section>
+
+  <section class="section-pad section-rule">
+    <div class="section-heading">
+      <div><p class="eyebrow">In the wild</p><h2>Lifestyle</h2></div>
+      <p>{{ page.lifestyle_note }}</p>
+    </div>
+    <div class="gallery-grid">
+      {% for image in page.lifestyle_images %}
+      <figure class="media-shell gallery-item" data-image-shell>
+        <img src="{{ image.src | relative_url }}" alt="{{ image.alt }}" loading="lazy" onerror="this.closest('[data-image-shell]').classList.add('is-missing'); this.remove();">
+        <span class="image-fallback">{{ image.label }}</span>
+      </figure>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section-pad colour-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Pick your look</p><h2>Available Colours</h2></div>
+      <p>Colour availability may vary by garment and edition.</p>
+    </div>
+    <div class="colour-grid">
+      {% for image in page.colourway_images %}
+      <figure class="media-shell colour-card" data-image-shell>
+        <img src="{{ image.src | relative_url }}" alt="{{ image.alt }}" loading="lazy" onerror="this.closest('[data-image-shell]').classList.add('is-missing'); this.remove();">
+        <span class="image-fallback">{{ image.label }}</span>
+      </figure>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="garment-section section-pad section-rule">
+    <div class="garment-copy"><p class="eyebrow">The design</p><h2>Clean garment view</h2><p>A distraction-free look at the artwork and placement.</p></div>
+    <div class="media-shell garment-media" data-image-shell>
+      <img src="{{ page.garment_image | relative_url }}" alt="{{ page.garment_alt }}" loading="lazy" onerror="this.closest('[data-image-shell]').classList.add('is-missing'); this.remove();">
+      <span class="image-fallback">{{ page.code }}<br>Garment image</span>
+    </div>
+  </section>
+
+  <nav class="design-pagination section-pad" aria-label="Design navigation">
+    {% assign ordered = site.designs | sort: 'code' %}
+    {% for item in ordered %}{% if item.code == page.code %}{% assign index = forloop.index0 %}{% endif %}{% endfor %}
+    {% assign prev_index = index | minus: 1 %}
+    {% assign next_index = index | plus: 1 %}
+    {% if prev_index >= 0 %}{% assign prev = ordered[prev_index] %}<a href="{{ prev.url | relative_url }}">← {{ prev.code }} {{ prev.title }}</a>{% else %}<span></span>{% endif %}
+    {% if next_index < ordered.size %}{% assign next = ordered[next_index] %}<a href="{{ next.url | relative_url }}">{{ next.code }} {{ next.title }} →</a>{% endif %}
+  </nav>
+</article>

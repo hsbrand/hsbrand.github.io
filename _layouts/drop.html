@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<section class="page-hero compact-hero">
+  <p class="eyebrow">Collection</p>
+  <h1>{{ page.title }}</h1>
+  <p>{{ page.description }}</p>
+</section>
+<section class="design-index section-pad">
+  {% assign drop_designs = site.designs | where: 'drop', page.title | sort: 'code' %}
+  <div class="card-grid">
+    {% for design in drop_designs %}
+      <a class="design-card" href="{{ design.url | relative_url }}">
+        <div class="media-shell card-media" data-image-shell>
+          <img src="{{ design.hero | relative_url }}" alt="" loading="lazy" onerror="this.closest('[data-image-shell]').classList.add('is-missing'); this.remove();">
+          <span class="image-fallback">{{ design.code }}</span>
+        </div>
+        <div class="card-meta"><span>{{ design.code }}</span><span>{{ design.title }}</span><span>View design →</span></div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
