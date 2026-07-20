@@ -100,45 +100,41 @@ layout: default
   </section>
 
   {% if page.team_editions %}
-    <section class="design-team-editions section-pad section-rule">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Exclusive collaborations</p>
-          <h2>Featured Team Editions</h2>
-        </div>
-
-        <p>
-          See how this design was reworked as part of an exclusive team
-          collection.
-        </p>
+  <section class="design-team-editions section-pad section-rule">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Exclusive collaborations</p>
+        <h2>Featured Team Editions</h2>
       </div>
 
-      <div class="drop-list">
-        {% for edition_code in page.team_editions %}
-          {% assign edition = site.team_editions | where: "team_edition", edition_code | upcase | first %}
+      <p>See how this design was adapted for an exclusive team collection.</p>
+    </div>
 
-          {% unless edition %}
-            {% assign edition = site.team_editions | where_exp: "item", "item.team_edition == edition_code" | first %}
-          {% endunless %}
+    <div class="drop-list">
+      {% for edition_id in page.team_editions %}
+        {% assign edition = site.team_editions
+          | where: "team_edition", edition_id
+          | first
+        %}
 
-          {% if edition %}
-            <a href="{{ edition.url | relative_url }}">
-              <span>{{ edition.team_edition }}</span>
+        {% if edition %}
+          <a href="{{ edition.url | relative_url }}">
+            <span>{{ edition.team_edition }}</span>
 
-              <div>
-                <strong>{{ edition.title }}</strong><br>
-                {% if edition.season %}
-                  <em>{{ edition.season }}</em>
-                {% endif %}
-              </div>
+            <div>
+              <strong>{{ edition.title }}</strong>
+              {% if edition.season %}
+                <br><em>{{ edition.season }}</em>
+              {% endif %}
+            </div>
 
-              <span>View Collection →</span>
-            </a>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </section>
-  {% endif %}
+            <span>View collection →</span>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
 
   <nav class="design-pagination section-pad" aria-label="Design navigation">
     {% assign ordered = site.designs | sort: "code" %}
