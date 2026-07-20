@@ -5,7 +5,7 @@ permalink: /about/
 ---
 <section class="page-hero about-hero"><p class="eyebrow">Our story</p><h1>It started with making things.</h1></section>
 <section class="about-grid section-pad">
-  <div class="about-mark"><img src="{{ '/assets/images/brand/hockey-stock-mark.jpg' | relative_url }}" alt="Hockey Stock mark"></div>
+  <div class="about-mark"><img src="{{ '/assets/images/brand/hockey-stock-mark.svg' | relative_url }}" alt="Hockey Stock mark"></div>
   <div class="prose large-prose">
     <p>Hockey Stock started as a way to learn how to make things on a computer. It quickly became something more: a creative outlet for a young boy with a never-ending list of projects and a constant interest in making things.</p>
     <p>We create stylish hockey clothes for kids who want to represent the game without looking like they are wearing ordinary team merchandise.</p>
