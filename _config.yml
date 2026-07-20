@@ -12,6 +12,9 @@ collections:
   drops:
     output: true
     permalink: /drops/:name/
+  team_editions:
+    output: true
+    permalink: /team_editions/:name/
 defaults:
   - scope:
       path: ""
