@@ -76,7 +76,7 @@ a {
   height: 38px;
   overflow: hidden;
   background: #fff;
-  border-radius: 50%;
+  border-radius: 0;
 }
 
 .brand-mark {
