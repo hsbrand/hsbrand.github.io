@@ -1,0 +1,171 @@
+---
+layout: default
+---
+
+{% assign team_image_path = '/assets/images/team-editions/' | append: page.team_edition | downcase | append: '/' %}
+
+<section class="team-edition-hero">
+  <div class="team-edition-hero-copy">
+    <p class="eyebrow">{{ page.eyebrow }}</p>
+    <p class="team-edition-id">{{ page.team_edition }}</p>
+    <h1>{{ page.title }}</h1>
+
+    {% if page.season %}
+      <p class="team-edition-season">{{ page.season }}</p>
+    {% endif %}
+
+    {% if page.summary %}
+      <p class="team-edition-summary">{{ page.summary }}</p>
+    {% endif %}
+  </div>
+
+  <div class="team-edition-hero-media media-shell">
+    <img
+      src="{{ team_image_path | append: page.hero_image | relative_url }}"
+      alt="{{ page.title }} Team Edition"
+    >
+    <div class="image-fallback">
+      {{ page.team_edition }}<br>
+      {{ page.title }}
+    </div>
+  </div>
+</section>
+
+{% if page.story %}
+<section class="team-edition-story section-pad section-rule">
+  <div>
+    <p class="eyebrow">The collaboration</p>
+    <h2>Made for {{ page.title }}</h2>
+  </div>
+
+  <div class="prose">
+    <p>{{ page.story }}</p>
+  </div>
+</section>
+{% endif %}
+
+{% if page.designs %}
+<section class="team-edition-designs section-pad section-rule">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">The collection</p>
+      <h2>Included Designs</h2>
+    </div>
+
+    <p>
+      Original Hockey Stock designs reworked exclusively for
+      {{ page.title }}.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    {% for design_code in page.designs %}
+      {% assign design = site.designs | where: "slug", design_code | first %}
+
+      {% unless design %}
+        {% assign design = site.designs | where: "design_number", design_code | first %}
+      {% endunless %}
+
+      {% unless design %}
+        {% assign design = site.designs | where: "code", design_code | first %}
+      {% endunless %}
+
+      {% if design %}
+        <a class="design-card" href="{{ design.url | relative_url }}">
+          <div class="card-media media-shell">
+            {% if design.hero_image %}
+              {% assign design_image_path = '/assets/images/designs/' | append: design_code | append: '/' %}
+              <img
+                src="{{ design_image_path | append: design.hero_image | relative_url }}"
+                alt="{{ design.title }}"
+              >
+            {% endif %}
+
+            <div class="image-fallback">
+              {{ design_code | upcase }}<br>
+              {{ design.title }}
+            </div>
+          </div>
+
+          <div class="card-meta">
+            <span>{{ design_code | upcase }}</span>
+            <strong>{{ design.title }}</strong>
+            <span>View Design →</span>
+          </div>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if page.gallery %}
+<section class="team-edition-gallery section-pad section-rule">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Team Edition</p>
+      <h2>{{ page.title }} in the wild</h2>
+    </div>
+
+    <p>
+      Lifestyle photography featuring the exclusive
+      {{ page.team_edition }} collection.
+    </p>
+  </div>
+
+  <div class="gallery-grid">
+    {% for image in page.gallery %}
+      <div class="gallery-item media-shell">
+        <img
+          src="{{ team_image_path | append: image | relative_url }}"
+          alt="{{ page.title }} Team Edition lifestyle photo"
+          loading="lazy"
+        >
+        <div class="image-fallback">
+          {{ page.team_edition }}<br>
+          Lifestyle Photo
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if page.exclusive %}
+<section class="team-edition-exclusive section-pad section-rule">
+  <div>
+    <p class="eyebrow">Exclusive collection</p>
+    <h2>Created for the team.</h2>
+  </div>
+
+  <div class="prose">
+    <p>
+      This Team Edition was created exclusively for {{ page.title }}.
+      The original Hockey Stock designs may be available separately, but
+      the {{ page.title }} colours and collection are not offered for
+      individual purchase.
+    </p>
+  </div>
+</section>
+{% endif %}
+
+{% if page.cta_title %}
+<section class="team-edition-cta section-pad section-rule">
+  <div>
+    <p class="eyebrow">Work with us</p>
+    <h2>{{ page.cta_title }}</h2>
+  </div>
+
+  <div class="prose">
+    {% if page.cta_text %}
+      <p>{{ page.cta_text }}</p>
+    {% endif %}
+
+    {% if page.cta_link and page.cta_button %}
+      <a class="button button-dark" href="{{ page.cta_link | relative_url }}">
+        {{ page.cta_button }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
