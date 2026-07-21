@@ -18,11 +18,9 @@ permalink: /about/
   </div>
 
   <div class="prose large-prose">
-    <p>Hockey Stock started as a way to learn how to make things on a computer. It quickly became something more: a creative outlet for a young boy with a never-ending list of projects and a constant interest in making things.</p>
+    <p>Hockey Stock started as a way for a kid to learn how to make things on a computer. It quickly became something more: a creative outlet for that kid who has a never-ending list of projects and a constant interest in making things.</p>
 
-    <p>We create stylish hockey clothes for kids who want to represent the game without looking like they are wearing ordinary team merchandise.</p>
-
-    <p>Around here, we call that <strong>sty</strong>.</p>
+    <p>We create stylish hockey clothes for players who want to represent the game without looking like they are wearing ordinary team merchandise.</p>
   </div>
 </section>
 
